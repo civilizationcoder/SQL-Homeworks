@@ -20,4 +20,7 @@ where rental rate = (select min(rental_rate) from film) and replacement_cost = (
 
 -- 4. payment tablosunda en fazla sayıda alışveriş yapan müşterileri(customer) sıralayınız.
 
-
+select customer.first_name, customer.last_name from customer 
+inner join payment on payment.customer_id = customer.customer_id
+Group By customer.customer_id
+Order By COUNT(*) DESC;
